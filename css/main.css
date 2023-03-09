@@ -1262,7 +1262,7 @@ header .logo a {
 	width: 100%;
 	height: auto;
 	clear: both;
-	display: transparent;
+	display: none;
 }
 .main-navigation > li {
 	display: block;
