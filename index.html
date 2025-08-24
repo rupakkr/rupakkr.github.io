@@ -28,9 +28,9 @@
 </head>
 <body class="bg-slate-900 text-gray-200 p-4">
 
-    <!-- Navigation Menu -->
-    <nav class="bg-slate-800 p-4 sticky top-0 z-50 shadow-md rounded-b-2xl mb-8">
-        <div class="container flex justify-center space-x-4 sm:space-x-8">
+    <!-- Desktop Navigation Menu (visible on medium screens and up) -->
+    <nav class="hidden md:flex bg-slate-800 p-4 sticky top-0 z-50 shadow-md rounded-b-2xl mb-8">
+        <div class="container flex justify-center space-x-8">
             <a href="#about" class="text-gray-400 hover:text-orange-500 font-medium transition-colors">About</a>
             <a href="#experience" class="text-gray-400 hover:text-orange-500 font-medium transition-colors">Experience</a>
             <a href="#skills" class="text-gray-400 hover:text-orange-500 font-medium transition-colors">Skills</a>
@@ -38,7 +38,7 @@
         </div>
     </nav>
 
-    <div class="container py-8 space-y-16">
+    <div class="container py-8 space-y-16 pb-20 md:pb-8">
 
         <!-- Header Section -->
         <header class="flex flex-col items-center text-center space-y-4 pt-12">
@@ -201,10 +201,32 @@
 
         <!-- Footer -->
         <footer class="text-center text-gray-500 text-sm py-4">
-            <p>&copy; 2025 Rupak Kumar. All rights reserved.</p>
+            <p>&copy; 2024 Rupak Kumar. All rights reserved.</p>
         </footer>
 
     </div>
+
+    <!-- Mobile Navigation Bar (hidden on medium screens and up) -->
+    <nav class="fixed bottom-0 left-0 right-0 md:hidden bg-slate-800/80 backdrop-blur-md p-2 shadow-inner-2xl z-50 rounded-t-2xl">
+        <div class="flex justify-around items-center h-full">
+            <a href="#about" class="flex flex-col items-center text-xs font-medium text-gray-400 hover:text-orange-500 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span class="mt-1">About</span>
+            </a>
+            <a href="#experience" class="flex flex-col items-center text-xs font-medium text-gray-400 hover:text-orange-500 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><line x1="2" x2="22" y1="12" y2="12"/></svg>
+                <span class="mt-1">Experience</span>
+            </a>
+            <a href="#skills" class="flex flex-col items-center text-xs font-medium text-gray-400 hover:text-orange-500 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span class="mt-1">Skills</span>
+            </a>
+            <a href="#contact" class="flex flex-col items-center text-xs font-medium text-gray-400 hover:text-orange-500 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.974-5.983a1 1 0 0 0-1.052 0L2 7"/></svg>
+                <span class="mt-1">Contact</span>
+            </a>
+        </div>
+    </nav>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -217,8 +239,9 @@
                     const targetId = event.currentTarget.getAttribute('href').substring(1);
                     const targetElement = document.getElementById(targetId);
                     if (targetElement) {
+                        const topNavHeight = document.querySelector('nav').offsetHeight;
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80, // Offset for the fixed nav bar
+                            top: targetElement.offsetTop - (window.innerWidth >= 768 ? topNavHeight + 20 : 0),
                             behavior: 'smooth'
                         });
                     }
