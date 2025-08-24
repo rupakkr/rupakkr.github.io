@@ -1,807 +1,345 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html class="no-js" lang="en">
-<!--<![endif]-->
-
+<html lang="en">
 <head>
-
-    <!--- basic page needs
-   ================================================== -->
-    <meta charset="utf-8">
-    <title>Rupak Kumar</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- mobile specific metas
-   ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- CSS
-   ================================================== -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/vendor.css">
-
-    <!-- script
-   ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
-
-    <!-- favicons
-	================================================== -->
-    <link rel="icon" type="image/png" href="favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rupak Kumar - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        .item-wrap {
-            text-align: center;
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .container {
+            max-width: 960px;
+            margin: auto;
+        }
+        .lucide-icon {
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+        /* Custom styles for the blog post form and modal */
+        #blog-form-container {
+            display: none;
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
-    <script>
-
-        var TxtType = function (el, toRotate, period) {
-            this.toRotate = toRotate;
-            this.el = el;
-            this.loopNum = 0;
-            this.period = parseInt(period, 10) || 2000;
-            this.txt = '';
-            this.tick();
-            this.isDeleting = false;
-        };
-
-        TxtType.prototype.tick = function () {
-            var i = this.loopNum % this.toRotate.length;
-            var fullTxt = this.toRotate[i];
-
-            if (this.isDeleting) {
-                this.txt = fullTxt.substring(0, this.txt.length - 1);
-            } else {
-                this.txt = fullTxt.substring(0, this.txt.length + 1);
-            }
-
-            this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
-
-            var that = this;
-            var delta = 200 - Math.random() * 100;
-
-            if (this.isDeleting) { delta /= 2; }
-
-            if (!this.isDeleting && this.txt === fullTxt) {
-                delta = this.period;
-                this.isDeleting = true;
-            } else if (this.isDeleting && this.txt === '') {
-                this.isDeleting = false;
-                this.loopNum++;
-                delta = 100;
-            }
-
-            setTimeout(function () {
-                that.tick();
-            }, delta);
-        };
-
-        window.onload = function () {
-            var elements = document.getElementsByClassName('typewrite');
-            for (var i = 0; i < elements.length; i++) {
-                var toRotate = elements[i].getAttribute('data-type');
-                var period = elements[i].getAttribute('data-period');
-                if (toRotate) {
-                    new TxtType(elements[i], JSON.parse(toRotate), period);
-                }
-            }
-            // INJECT CSS
-            var css = document.createElement("style");
-            css.type = "text/css";
-            css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #ffff}";
-            document.body.appendChild(css);
-        };
-    </script>
 </head>
+<body class="bg-slate-900 text-gray-200 p-4">
 
-<body id="top">
-
-    <!-- header 
-   ================================================== -->
-    <header>
-        <div class="row">
-
-            <div class="top-bar">
-                <a class="menu-toggle" href="#"><span>Menu</span></a>
-
-<!--                <div class="logo">-->
-<!--                    <a href="index.html">RUPAK</a>-->
-<!--                </div>-->
-
-                <nav id="main-nav-wrap">
-                    <ul class="main-navigation">
-                        <li class="current"><a class="smoothscroll" href="#intro" title="">Home</a></li>
-                        <li><a class="smoothscroll" href="#about" title="">About</a></li>
-                        <li><a class="smoothscroll" href="#resume" title="">Resume</a></li>
-                        <li><a class="smoothscroll" href="#portfolio" title="">Portfolio</a></li>
-                        <li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
-                    </ul>
-                </nav>
-            </div> <!-- /top-bar -->
-
-        </div> <!-- /row -->
-    </header> <!-- /header -->
-
-    <!-- intro section
-   ================================================== -->
-    <section id="intro">
-
-        <div class="intro-overlay"></div>
-
-        <div class="intro-content">
-            <div class="row">
-
-                <div class="col-twelve ">
-
-                    <h5 class="">Hello, World.</h5>
-                    <h1>I'm Rupak</h1>
-                    <p class="intro-position">
-
-                    <h3 style="color:white;">
-                        <a href="" class="typewrite" data-period="2000"
-                            data-type='["Backend Developer","Java","REST","Oracle ADF","javaScript","Oracle Database","Git"]'
-                            style="color:#008080;font-family:consolas;">
-                            <span class="wrap"></span>
-                        </a>
-                    </h3>
-
-                    <a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
-
-                </div>
-
-            </div>
-        </div> <!-- /intro-content -->
-
-        <ul class="intro-social">
-            <!-- <li><a href="#"><i class="fa fa-behance"></i></a></li> -->
-            <!-- <li><a href="#"><i class="fa fa-slack"></i></a></li> -->
-            <li><a href="https://www.github.com/rupakkr" target="_blank"><i class="fa fa-github"></i></a></li>
-        </ul> <!-- /intro-social -->
-
-    </section> <!-- /intro -->
-
-
-    <!-- about section
-   ================================================== -->
-    <section id="about">
-
-        <div class="row section-intro ">
-            <div class="col-twelve">
-
-                <h5>About</h5>
-                <h1>Let Me Introduce Myself</h1>
-
-                <div class="intro-info">
-
-                    <img src="images/profile.jpeg" alt="Profile Picture">
-
-                    <p class="lead" style="color: #008080;">I am Senior Applications Engineer, Currently Working for Oracle
-                        India.</p>
-                </div>
-
-            </div>
-        </div> <!-- /section-intro -->
-
-        <div class="row about-content">
-
-            <div class="col-six tab-full">
-
-                <h3>Profile</h3>
-
-                <ul class="info-list">
-                    <li>
-                        <strong>Fullname:</strong>
-                        <span>Rupak Kumar</span>
-                    </li>
-                    <li>
-                        <strong>Job:</strong>
-                        <span>Oracle India</span>
-                    </li>
-                    <li>
-                        <strong>Website:</strong>
-                        <span>www.rupakkr.github.io</span>
-                    </li>
-                    <li>
-                        <strong>Email:</strong>
-                        <span><a href="mailto:rupak.kr92@gmail.com">rupak.rs89@gmail.com</a></span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-six tab-full">
-                <h3>Skills</h3>
-
-                <ul class="skill-bars">
-                    <li>
-                        <div class="progress percent90"><span>90%</span></div>
-                        <strong>Java</strong>
-                    </li>
-                    <li>
-                        <div class="progress percent90"><span>90%</span></div>
-                        <strong>Oracle ADF</strong>
-                    </li>
-                    <li>
-                        <div class="progress percent70"><span>70%</span></div>
-                        <strong>Oracle Database</strong>
-                    </li>
-                    <li>
-                        <div class="progress percent80"><span>70%</span></div>
-                        <strong>REST SERVICES</strong>
-                    </li>
-                    <li>
-                        <div class="progress percent30"><span>30%</span></div>
-                        <strong>Python</strong>
-                    </li>
-                </ul>
-            </div>
-
+    <!-- Navigation Menu -->
+    <nav class="bg-slate-800 p-4 sticky top-0 z-50 shadow-md rounded-b-2xl mb-8">
+        <div class="container flex justify-center space-x-4 sm:space-x-8">
+            <a href="#about" class="text-gray-400 hover:text-orange-500 font-medium transition-colors">About</a>
+            <a href="#experience" class="text-gray-400 hover:text-orange-500 font-medium transition-colors">Experience</a>
+            <a href="#skills" class="text-gray-400 hover:text-orange-500 font-medium transition-colors">Skills</a>
+            <a href="#blogs" class="text-gray-400 hover:text-orange-500 font-medium transition-colors">Blogs</a>
+            <a href="#contact" class="text-gray-400 hover:text-orange-500 font-medium transition-colors">Contact</a>
         </div>
+    </nav>
 
-        <div class="row button-section">
-            <div class="col-twelve">
-                <a href="./assets/resume_rpk_v1.pdf" title="Download CV" class="button button-primary" download>Download CV</a>
+    <div class="container py-8 space-y-16">
+
+        <!-- Header Section -->
+        <header class="flex flex-col items-center text-center space-y-4 pt-12">
+            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-orange-500 shadow-lg">
+                <img 
+                    src="https://placehold.co/128x128/f97316/ffffff?text=RK" 
+                    alt="Rupak Kumar" 
+                    class="w-full h-full object-cover" 
+                />
             </div>
-        </div>
-
-    </section> <!-- /process-->
-
-
-    <!-- resume Section
-   ================================================== -->
-    <section id="resume" class="grey-section">
-
-        <div class="row resume-timeline">
-
-            <div class="col-twelve resume-header">
-
-                <h2>Education</h2>
-
-            </div> <!-- /resume-header -->
-
-            <div class="col-twelve">
-
-                <div class="timeline-wrap">
-
-                    <div class="timeline-block">
-
-                        <div class="timeline-ico">
-                            <i class="fa fa-briefcase"></i>
-                        </div>
-
-                        <div class="timeline-header">
-                            <h3>Bachelor Degree</h3>
-                            <p>August 2011 - June 2015</p>
-                        </div>
-
-                        <div class="timeline-content">
-                            <h4>DIT School of Engineering(Amity)</h4>
-                            <p>Amity, Knowledge park 4,Greater Noida,INDIA</p>
-                        </div>
-
-                    </div> <!-- /timeline-block -->
-
-                    <div class="timeline-block">
-
-                        <div class="timeline-ico">
-                            <i class="fa fa-briefcase"></i>
-                        </div>
-
-                        <div class="timeline-header">
-                            <h3>Higher Secondary</h3>
-                            <p>May 2008 - June 2010</p>
-                        </div>
-
-                        <div class="timeline-content">
-                            <h4>Satyendra Narayan Singh College</h4>
-                            <p>92c, National Highway 77, Hajipur, Bihar 844102</p>
-                        </div>
-
-                    </div> <!-- /timeline-block -->
-
-                </div> <!-- /timeline-wrap -->
-
-            </div> <!-- /col-twelve -->
-
-        </div> <!-- /resume-timeline -->
-
-    </section> <!-- /features -->
-
-
-    <!-- Portfolio Section
-   ================================================== -->
-    <section id="portfolio">
-
-        <div class="row section-intro">
-            <div class="col-twelve">
-
-                <h5>Portfolio</h5>
-                <h1>Some of My Works.</h1>
-
-                <p class="lead">Check out some of my open source projects on GitHub.</p>
-
+            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-white">Rupak Kumar</h1>
+            <p class="text-xl text-gray-400">Project Leader | Software Engineer</p>
+            <div class="flex space-x-4 text-orange-500">
+                <a href="https://www.linkedin.com/in/rupakkr/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin hover:text-white transition-colors"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://github.com/rupakkr" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github hover:text-white transition-colors"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.26c3.27-.35 6.72-1.62 6.72-7.27a4.93 4.93 0 0 0-1.34-3.5 4.67 4.67 0 0 0-.08-3.75s-.96-.34-3.23 1.25a11.06 11.06 0 0 0-5.4 0c-2.27-1.59-3.23-1.25-3.23-1.25a4.67 4.67 0 0 0-.08 3.75A4.93 4.93 0 0 0 4 10.42c0 5.65 3.45 6.92 6.72 7.27a4.8 4.8 0 0 0-1 3.26v4"/><path d="M9 18c-2.3 0-3.5-1.12-3.5-2.5 0-.8.5-1.5 1.5-2 1.3-.7 2.4-.6 3.5-.6"/></svg>
+                </a>
             </div>
-        </div> <!-- /section-intro-->
+            <!-- Download Resume Button -->
+            <a href="/download-resume" download class="mt-4 inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
+                Download Resume
+            </a>
+        </header>
 
-        <div class="row portfolio-content">
+        <!-- About Me Section -->
+        <section id="about" class="bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-700">
+            <h2 class="text-3xl font-semibold mb-4 text-orange-500">About Me</h2>
+            <p class="text-lg text-gray-300 leading-relaxed">
+                I am a passionate and results-driven Project Leader and Software Engineer with a strong background in developing scalable SaaS applications and enterprise-level solutions. With over a decade of experience, I specialize in leading development teams, designing new product capabilities, and ensuring high-quality performance. My expertise lies in full-stack development with a focus on Java and Javascript, and I have a proven track record of delivering products that streamline business processes and drive significant improvements.
+            </p>
+        </section>
 
-            <div class="col-twelve">
-
-                <!-- portfolio-wrapper -->
-                <div id="folio-wrapper" class="block-1-2 block-mob-full stack">
-
-                    <div class="bgrid folio-item">
-                        <div class="item-wrap">
-                            <img src="images/portfolio/beetle.jpg" alt="qikqr">
-                            <a href="#modal-01" class="overlay">
-                                <div class="folio-item-table">
-                                    <div class="folio-item-cell">
-                                        <h3 class="folio-title">Project 1</h3>
-                                        <span class="folio-types">
-                                            A small Description would be fine.
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div> <!-- /folio-item -->
-
-                    <div class="bgrid folio-item">
-                        <div class="item-wrap">
-                            <img src="images/portfolio/clouds.jpg" alt="Calender Widget">
-                            <a href="#modal-02" class="overlay">
-                                <div class="folio-item-table">
-                                    <div class="folio-item-cell">
-                                        <h3 class="folio-title">Project 2</h3>
-                                        <span class="folio-types">
-                                            A small Description would be fine.
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div> <!-- /folio-item -->
-
-                    </div> 
-
-                    <!-- modal popups - begin
-	            ============================================================= -->
-                    <div id="modal-01" class="popup-modal slider mfp-hide">
-
-                        <div class="media">
-                            <img src="images/portfolio/clouds.jpg" alt="" />
-                        </div>
-
-                        <div class="description-box">
-                            <h4>Project 1</h4>
-                            <p></p>
-
-                            <div class="categories">Desktop Apps</div>
-                        </div>
-
-                        <div class="link-box">
-                            <a href="#">Details</a>
-                            <a href="#" class="popup-modal-dismiss">Close</a>
-                        </div>
-
-                    </div> <!-- /modal-01 -->
-
-                    <div id="modal-02" class="popup-modal slider mfp-hide">
-
-                        <div class="media">
-                            <img src="images/portfolio/beetle.jpg" alt="" />
-                        </div>
-
-                        <div class="description-box">
-                            <h4>Project 2</h4>
-                            <p>Description..</p>
-
-                            <div class="categories">Desktop Apps</div>
-                        </div>
-
-                        <div class="link-box">
-                            <a href="#">Details</a>
-                            <a href="#" class="popup-modal-dismiss">Close</a>
-                        </div>
-
-                    </div> <!-- /modal-02 -->
-
-
-                    <!-- modal popups - end
-	            ============================================================= -->
-
-                </div> <!-- /portfolio-wrapper -->
-
-        </div> <!-- /twelve -->
-    </section>
-
-    <!-- CTA Section
-	 ================================================== -->
-
-
-    <!-- <section id="cta" class="grey-section">
-
-        <div class="row cta-content">
-
-            <div class="col-twelve section-ads">
-
-                <h2 class="h01">Help Me To Stay Open Source</h2>
-                <p class="lead">
-                    <a class="button button-primary large" href="#" target="_blank"
-                        rel="noopener noreferrer">Donate Me On PayPal</a>
-                </p>
+        <!-- Experience Section -->
+        <section id="experience" class="space-y-8">
+            <div class="flex items-center space-x-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase text-orange-500"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><line x1="2" x2="22" y1="12" y2="12"/></svg>
+                <h2 class="text-3xl font-semibold text-white">Experience</h2>
             </div>
-
-        </div> 
-
-    </section> -->
-
-
-    <!-- services Section
-   ================================================== -->
-    <section id="services">
-
-        <div class="overlay"></div>
-
-        <div class="row section-intro">
-            <div class="col-twelve">
-
-                <h5>Services</h5>
-                <h1>What Can I Do For You?</h1>
-
-                <p class="lead"></p>
-
-            </div>
-        </div> <!-- /section-intro -->
-
-        <div class="row services-content">
-
-            <div id="owl-slider" class="owl-carousel services-list">
-
-                <!-- <div class="service">
-
-                    <span class="icon"><i class="icon-earth"></i></span>
-
-                    <div class="service-content">
-
-                        <h3>Webdesign</h3>
-
-                    </div>
-
-                </div> -->
-
-                <div class="service">
-
-                    <span class="icon"><i class="icon-window"></i></span>
-
-                    <div class="service-content">
-
-                        <h3>Web Development</h3>
-
-                        <!--<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	         		</p>-->
-
-                    </div>
-
-                </div> <!-- /service -->
-
-
-                <div class="service">
-
-                    <span class="icon"><i class="icon-toggles"></i></span>
-
-                    <div class="service-content">
-
-                        <h3>Backend Development</h3>
-                    </div>
-
+            
+            <div class="bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-700 space-y-6">
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold text-white">Project Leader - Oracle India</h3>
+                    <p class="text-gray-400">Noida, India | 11/2021 - Present</p>
                 </div>
-
-                <div class="service">
-
-                    <span class="icon"><i class="icon-image"></i></span>
-
-                    <div class="service-content">
-
-                        <h3>Microservice Design and Development</h3>
-
-                        <!-- <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	        			</p> -->
-
-                    </div>
-
-                </div> <!-- /service -->
-<!-- 
-                <div class="service">
-
-                    <span class="icon"><i class="icon-chat"></i></span>
-
-                    <div class="service-content">
-
-                        <h3>Consultancy</h3>
-
-                    </div>
-
-                </div>  -->
-            </div> <!-- /services-list -->
-
-        </div> <!-- /services-content -->
-
-    </section> <!-- /services -->
-
-
-    <!-- stats Section
-   ================================================== -->
-    <!-- <section id="stats" class="count-up">
-
-		<div class="row">
-			<div class="col-twelve">
-
-				<div class="block-1-6 block-s-1-3 block-tab-1-2 block-mob-full stats-list">
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-pencil-ruler"></i>
-						</div>
-
-						<h3 class="stat-count">
-							1500
-						</h3>
-
-						<h5 class="stat-title">
-							Projects Completed
-						</h5>
-
-					</div> /stat					 -->
-
-    <!-- <div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-users"></i>
-						</div>
-
-						<h3 class="stat-count">
-							900
-						</h3>
-
-						<h5 class="stat-title">
-							Happy Clients
-						</h5>
-
-					</div>  /stat -->
-
-    <!-- <div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-badge"></i>
-						</div>
-
-						<h3 class="stat-count">
-							200
-						</h3>
-
-						<h5 class="stat-title">
-							Awards Received
-						</h5>
-
-					</div> -->
-
-    <!-- <div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-light-bulb"></i>
-						</div>
-
-						<h3 class="stat-count">
-							120
-						</h3>
-
-						<h5 class="stat-title">
-							Crazy Ideas
-						</h5>
-
-                    </div>  -->
-    <!-- /stat -->
-
-    <!-- <div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-cup"></i>
-						</div>
-
-						<h3 class="stat-count">
-							1500
-						</h3>
-
-						<h5 class="stat-title">
-							Coffee Cups
-						</h5>
-
-                    </div> -->
-    <!-- /stat -->
-
-    <!-- <div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-clock"></i>
-						</div>
-
-						<h3 class="stat-count">
-							7200
-						</h3>
-
-						<h5 class="stat-title">
-							Hours
-						</h5>
-
-                    </div> -->
-    <!-- /stat -->
-
-    <!-- </div>  -->
-    <!-- /stats-list -->
-
-    <!-- </div>  -->
-    <!-- /twelve -->
-    <!-- </div>  -->
-    <!-- /row -->
-
-    <!-- </section> -->
-    <!-- /stats -->
-
-
-    <!-- contact
-   ================================================== -->
-    <section id="contact">
-
-        <div class="row section-intro">
-            <div class="col-twelve">
-
-                <h5>Contact</h5>
-                <h1>I'd Love To Hear From You.</h1>
-
-                <p class="lead"></p>
-
-            </div>
-        </div> <!-- /section-intro -->
-
-        <!-- <div class="row contact-form">
-
-   		<div class="col-twelve"> -->
-
-        <!-- form -->
-        <!-- <form name="contactForm" id="contactForm" method="post" action=""> -->
-        <!-- <fieldset> -->
-
-        <!-- <div class="form-field"> -->
-        <!-- <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required=""> -->
-        <!-- </div> -->
-        <!-- <div class="form-field"> -->
-        <!-- <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required=""> -->
-        <!-- </div> -->
-        <!-- <div class="form-field"> -->
-        <!-- <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value=""> -->
-        <!-- </div>                        -->
-        <!-- <div class="form-field"> -->
-        <!-- <textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea> -->
-        <!-- </div>                      
-                 <div class="form-field">
-                     <button class="submitform">Submit</button>
-                     <div id="submit-loader">
-                        <div class="text-loader">Sending...</div>                             
-       				      <div class="s-loader">
-								  	<div class="bounce1"></div>
-								  	<div class="bounce2"></div>
-								  	<div class="bounce3"></div>
-								</div>
-							</div>
-                  </div>
-
-      			</fieldset>
-              </form>  -->
-        <!-- Form End -->
-
-        <!-- contact-warning -->
-        <!-- <div id="message-warning">            	 -->
-        <!-- </div>             -->
-        <!-- contact-success -->
-        <!-- <div id="message-success">
-               <i class="fa fa-check"></i>Your message was sent, thank you!<br>
-      		</div> -->
-
-        <!-- </div>  -->
-        <!-- /col-twelve -->
-
-        <!-- </div> -->
-        <!-- /contact-form -->
-
-        <div class="row contact-info">
-
-            <div class="col-four tab-full">
-
-                <div class="icon">
-                    <i class="icon-pin"></i>
-                </div>
-
-                <h5>Where to find me</h5>
-
-                <p>Noida, UP, INDIA </p>
-
-            </div>
-
-            <div class="col-four tab-full collapse">
-
-                <div class="icon">
-                    <i class="icon-mail"></i>
-                </div>
-
-                <h5>Email Me At</h5>
-
-                <p>
-                    <a href="mailto:rupak.rs89@gmail.com" style="color:grey;">rupak.rs89@gmail.com</a>
-                </p>
-            </div>
-
-            <div class="col-four tab-full">
-
-                <div class="icon">
-                    <i class="icon-phone"></i>
-                </div>
-
-                <h5>Call Me At</h5>
-
-                <p>Phone: <a href="tel:+910000000000" style="color:grey;"> (+91) 000000000000</a> <br>
-                </p>
-
-            </div>
-
-        </div> <!-- /contact-info -->
-
-    </section> <!-- /contact -->
-
-
-    <!-- footer
-   ================================================== -->
-
-    <footer>
-        <div class="row">
-
-            <div class="col-six tab-full pull-right social">
-
-                <ul class="footer-social">
-                    <!-- <li><a href="#"><i class="fa fa-behance"></i></a></li> -->
-                    <!-- <li><a href="#"><i class="fa fa-twitter"></i></a></li> -->
-                    <li><a href="https://www.github.com/rupakkr"><i class="fa fa-github"></i></a></li>
+                <ul class="list-disc list-inside space-y-2 text-gray-300">
+                    <li>Led the development of the next-generation Oracle Recruiting Cloud SaaS application for Oracle Fusion Human Capital Management (HCM) product.</li>
+                    <li>Designed and implemented new product capabilities to meet evolving business requirements.</li>
+                    <li>Conducted thorough code reviews to ensure quality and performance.</li>
+                    <li>Developed advanced features, including Smart Candidate Pool Creation and synchronization utilizing Elasticsearch.</li>
+                    <li>Created multiple integrations with the HCM Campaign product to enhance functionality and user experience.</li>
                 </ul>
-
             </div>
 
-            <div class="col-six tab-full">
-                <div class="copyright">
-                    <span>© Copyright Rupak Kumar 2023.</span>
+            <div class="bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-700 space-y-6">
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold text-white">Software Engineer - Nile Technologies Pvt. Ltd</h3>
+                    <p class="text-gray-400">Noida, India | 07/2018 - 11/2021</p>
+                </div>
+                <ul class="list-disc list-inside space-y-2 text-gray-300">
+                    <li>Led a team of engineers to develop a comprehensive product for a leading telecom company in India.</li>
+                    <li>Developed an Invoice Digitization Portal enabling suppliers to onboard and participate in business bidding.</li>
+                    <li>Implemented multiple due diligence and security checkpoints, including PAN card validation, GST number validation, and bank account registration using penny testing.</li>
+                    <li>Product helped the company to reduce the fines for late payments by 90% through digitizing manual processes.</li>
+                </ul>
+            </div>
+
+            <div class="bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-700 space-y-6">
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold text-white">Software Engineer - HyberIT Services Pvt. Ltd</h3>
+                    <p class="text-gray-400">Noida, India | 08/2015 - 07/2018</p>
+                </div>
+                <ul class="list-disc list-inside space-y-2 text-gray-300">
+                    <li>Conducted several proof of concepts (PoCs) for clients, demonstrating the feasibility and potential of proposed solutions.</li>
+                    <li>Designed and developed an in-house ERP product for one of the leading manufacturing companies in India.</li>
+                    <li>Maintained thorough records of development milestones and changes to support future updates and troubleshooting.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="space-y-8">
+            <div class="flex items-center space-x-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code text-orange-500"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <h2 class="text-3xl font-semibold text-white">Skills</h2>
+            </div>
+            <div class="bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-700">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-gray-300">
+                    <div>
+                        <h4 class="font-bold text-lg mb-2 text-orange-500">Programming & Frameworks</h4>
+                        <ul class="list-none space-y-1">
+                            <li>Java</li>
+                            <li>Javascript</li>
+                            <li>Microservices</li>
+                            <li>Rest</li>
+                            <li>System Design</li>
+                            <li>Data Structures</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2 text-orange-500">Databases & Tools</h4>
+                        <ul class="list-none space-y-1">
+                            <li>Oracle Database</li>
+                            <li>Pl/Sql</li>
+                            <li>Git</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2 text-orange-500">Oracle-Specific</h4>
+                        <ul class="list-none space-y-1">
+                            <li>Oracle ADF</li>
+                            <li>ADE</li>
+                            <li>Weblogic</li>
+                            <li>VBCS</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2 text-orange-500">Operating Systems</h4>
+                        <ul class="list-none space-y-1">
+                            <li>Linux</li>
+                            <li>Windows</li>
+                            <li>Mac</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div id="go-top">
-                <a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+        <!-- Education Section -->
+        <section id="education" class="space-y-8">
+            <div class="flex items-center space-x-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap text-orange-500"><path d="M22 10v6M2.5 10a1.5 1.5 0 0 0 0 3a1.5 1.5 0 0 0 0-3zM12 2v20c-3 0-6-3-6-6s3-6 6-6V2a2 2 0 0 0 2-2h4a2 2 0 0 0 2 2v20c-3 0-6-3-6-6s3-6 6-6V2a2 2 0 0 0 2-2h4a2 2 0 0 0 2 2v13"/><path d="M12 2a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v20c0 3 3 6 6 6s6-3 6-6v-6"/></svg>
+                <h2 class="text-3xl font-semibold text-white">Education</h2>
+            </div>
+            <div class="bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-700">
+                <h3 class="text-xl font-bold text-white">B.Tech, Computer Science and Engineering</h3>
+                <p class="text-gray-400">DIT School of Engineering (Amity)</p>
+                <p class="text-gray-400">Noida, India | 08/2011 - 06/2015</p>
+            </div>
+        </section>
+
+        <!-- Blogs Section -->
+        <section id="blogs" class="space-y-8">
+            <div class="flex items-center space-x-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-align-left text-orange-500"><line x1="21" x2="3" y1="6" y2="6"/><line x1="15" x2="3" y1="12" y2="12"/><line x1="17" x2="3" y1="18" y2="18"/></svg>
+                <h2 class="text-3xl font-semibold text-white">Blogs</h2>
+            </div>
+            <div class="flex justify-end mb-4">
+                <button id="addBlogBtn" class="bg-orange-500 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-orange-600 transition-colors">
+                    Add New Post
+                </button>
+            </div>
+            
+            <!-- Blog Form Container -->
+            <div id="blog-form-container" class="bg-slate-800 p-6 rounded-2xl shadow-lg border border-slate-700 animate-fadeIn mb-8">
+                <form id="blog-form" class="space-y-4">
+                    <div>
+                        <label for="blog-title" class="block text-gray-300 font-semibold mb-1">Title</label>
+                        <input type="text" id="blog-title" class="w-full p-3 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-slate-700 text-white" placeholder="Enter title here..." required>
+                    </div>
+                    <div>
+                        <label for="blog-content" class="block text-gray-300 font-semibold mb-1">Content</label>
+                        <textarea id="blog-content" rows="6" class="w-full p-3 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-slate-700 text-white" placeholder="Write your blog post here..." required></textarea>
+                    </div>
+                    <div class="flex justify-end space-x-4">
+                        <button type="button" id="cancelBlogBtn" class="bg-gray-600 text-gray-200 font-bold py-2 px-6 rounded-full shadow-md hover:bg-gray-700 transition-colors">Cancel</button>
+                        <button type="submit" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-full shadow-md hover:bg-blue-700 transition-colors">Publish</button>
+                    </div>
+                </form>
             </div>
 
-        </div> <!-- /row -->
-    </footer>
+            <!-- Blog Posts Container -->
+            <div id="blog-posts-container" class="space-y-8">
+                <!-- Example blog post will be added here via JavaScript -->
+            </div>
+        </section>
 
-    <div id="preloader">
-        <div id="loader"></div>
+        <!-- Contact Section -->
+        <section id="contact" class="space-y-8">
+            <div class="flex items-center space-x-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail text-orange-500"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.974-5.983a1 1 0 0 0-1.052 0L2 7"/></svg>
+                <h2 class="text-3xl font-semibold text-white">Get in Touch</h2>
+            </div>
+            <div class="bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-700 space-y-4">
+                <div class="flex items-center space-x-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail text-orange-500"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.974-5.983a1 1 0 0 0-1.052 0L2 7"/></svg>
+                    <a href="mailto:rupak.kr92@gmail.com" class="text-lg text-gray-300 hover:text-white transition-colors">rupak.kr92@gmail.com</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone text-orange-500"><path d="M22 16.92v3.08a2 2 0 0 1-2.18 2.18C14.15 22.18 9.22 18.29 5.08 14.15 2.92 11.82 2.18 9.85 2.18 7.82a2 2 0 0 1 2.18-2.18h3.08a2 2 0 0 1 2 2.18c0 .28-.02.55-.07.82a4.4 4.4 0 0 0-1.12 2.62c.28.32 1.45 1.5 2.87 2.92 1.42 1.42 2.62 2.62 2.92 2.87.52-.1 1.05-.12 1.58-.12a4.4 4.4 0 0 0 2.62-1.12c.28.05.55.07.82.07a2 2 0 0 1 2.18 2z"/></svg>
+                    <a href="tel:+919350943454" class="text-lg text-gray-300 hover:text-white transition-colors">+91 9350943454</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 text-sm py-4">
+            <p>&copy; 2024 Rupak Kumar. All rights reserved.</p>
+        </footer>
+
     </div>
 
-    <!-- Java Script
-   ================================================== -->
-    <script src="js/jquery-2.1.3.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addBlogBtn = document.getElementById('addBlogBtn');
+            const blogFormContainer = document.getElementById('blog-form-container');
+            const cancelBlogBtn = document.getElementById('cancelBlogBtn');
+            const blogForm = document.getElementById('blog-form');
+            const blogPostsContainer = document.getElementById('blog-posts-container');
+            const navLinks = document.querySelectorAll('nav a');
+
+            // Initial blog posts (dummy data)
+            const initialBlogs = [
+                {
+                    title: "The Importance of Good System Design",
+                    content: "Good system design is the foundation of a robust and scalable application. It's about more than just writing code; it's about anticipating future needs and creating a flexible architecture that can grow with the business. This blog post explores key principles of system design that I've applied in my projects."
+                },
+                {
+                    title: "Leveraging Elasticsearch for Smart Candidate Pools",
+                    content: "In my recent work at Oracle, I developed a feature for smart candidate pool creation using Elasticsearch. This post dives into how we used Elasticsearch's powerful search capabilities to match candidates with job roles more efficiently, significantly improving the user experience."
+                }
+            ];
+
+            // Function to add a new blog post to the UI
+            function addBlogPostToUI(title, content) {
+                const blogPostDiv = document.createElement('div');
+                blogPostDiv.className = 'bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-700 space-y-4 animate-fadeIn';
+                
+                const titleElement = document.createElement('h3');
+                titleElement.className = 'text-xl font-bold text-white';
+                titleElement.textContent = title;
+
+                const contentElement = document.createElement('p');
+                contentElement.className = 'text-gray-300';
+                contentElement.textContent = content;
+
+                const dateElement = document.createElement('p');
+                dateElement.className = 'text-sm text-gray-500';
+                dateElement.textContent = `Published on: ${new Date().toLocaleDateString()}`;
+
+                blogPostDiv.appendChild(titleElement);
+                blogPostDiv.appendChild(contentElement);
+                blogPostDiv.appendChild(dateElement);
+                blogPostsContainer.prepend(blogPostDiv); // Add to the top of the list
+            }
+
+            // Populate the page with initial blogs
+            initialBlogs.forEach(blog => addBlogPostToUI(blog.title, blog.content));
+
+            // Event listener to show the blog form
+            addBlogBtn.addEventListener('click', () => {
+                blogFormContainer.style.display = 'block';
+                blogForm.reset();
+            });
+
+            // Event listener to hide the blog form
+            cancelBlogBtn.addEventListener('click', () => {
+                blogFormContainer.style.display = 'none';
+            });
+
+            // Event listener for form submission
+            blogForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const title = document.getElementById('blog-title').value;
+                const content = document.getElementById('blog-content').value;
+
+                if (title && content) {
+                    addBlogPostToUI(title, content);
+                    blogFormContainer.style.display = 'none'; // Hide the form after submission
+                }
+            });
+
+            // Smooth scrolling for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const targetId = event.currentTarget.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80, // Offset for the fixed nav bar
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
-
 </html>
