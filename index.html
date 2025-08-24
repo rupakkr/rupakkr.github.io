@@ -24,17 +24,6 @@
             fill: none;
             stroke-width: 2;
         }
-        /* Custom styles for the blog post form and modal */
-        #blog-form-container {
-            display: none;
-        }
-        .animate-fadeIn {
-            animation: fadeIn 0.5s ease-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body class="bg-slate-900 text-gray-200 p-4">
@@ -45,7 +34,6 @@
             <a href="#about" class="text-gray-400 hover:text-orange-500 font-medium transition-colors">About</a>
             <a href="#experience" class="text-gray-400 hover:text-orange-500 font-medium transition-colors">Experience</a>
             <a href="#skills" class="text-gray-400 hover:text-orange-500 font-medium transition-colors">Skills</a>
-            <!--a href="#blogs" class="text-gray-400 hover:text-orange-500 font-medium transition-colors">Blogs</a -->
             <a href="#contact" class="text-gray-400 hover:text-orange-500 font-medium transition-colors">Contact</a>
         </div>
     </nav>
@@ -72,7 +60,7 @@
                 </a>
             </div>
             <!-- Download Resume Button -->
-            <a href="./assets/Rupak-Resume-cropped-1.pdf" download class="mt-4 inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
+            <a href="./assets/Rupak-Resume-cropped-1.pdf" download="Rupak-Resume-cropped-1.pdf" class="mt-4 inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
                 Download Resume
             </a>
         </header>
@@ -192,6 +180,7 @@
                 <p class="text-gray-400">Noida, India | 08/2011 - 06/2015</p>
             </div>
         </section>
+
         <!-- Contact Section -->
         <section id="contact" class="space-y-8">
             <div class="flex items-center space-x-4">
@@ -219,73 +208,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const addBlogBtn = document.getElementById('addBlogBtn');
-            const blogFormContainer = document.getElementById('blog-form-container');
-            const cancelBlogBtn = document.getElementById('cancelBlogBtn');
-            const blogForm = document.getElementById('blog-form');
-            const blogPostsContainer = document.getElementById('blog-posts-container');
             const navLinks = document.querySelectorAll('nav a');
-
-            // Initial blog posts (dummy data)
-            const initialBlogs = [
-                {
-                    title: "The Importance of Good System Design",
-                    content: "Good system design is the foundation of a robust and scalable application. It's about more than just writing code; it's about anticipating future needs and creating a flexible architecture that can grow with the business. This blog post explores key principles of system design that I've applied in my projects."
-                },
-                {
-                    title: "Leveraging Elasticsearch for Smart Candidate Pools",
-                    content: "In my recent work at Oracle, I developed a feature for smart candidate pool creation using Elasticsearch. This post dives into how we used Elasticsearch's powerful search capabilities to match candidates with job roles more efficiently, significantly improving the user experience."
-                }
-            ];
-
-            // Function to add a new blog post to the UI
-            function addBlogPostToUI(title, content) {
-                const blogPostDiv = document.createElement('div');
-                blogPostDiv.className = 'bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-700 space-y-4 animate-fadeIn';
-                
-                const titleElement = document.createElement('h3');
-                titleElement.className = 'text-xl font-bold text-white';
-                titleElement.textContent = title;
-
-                const contentElement = document.createElement('p');
-                contentElement.className = 'text-gray-300';
-                contentElement.textContent = content;
-
-                const dateElement = document.createElement('p');
-                dateElement.className = 'text-sm text-gray-500';
-                dateElement.textContent = `Published on: ${new Date().toLocaleDateString()}`;
-
-                blogPostDiv.appendChild(titleElement);
-                blogPostDiv.appendChild(contentElement);
-                blogPostDiv.appendChild(dateElement);
-                blogPostsContainer.prepend(blogPostDiv); // Add to the top of the list
-            }
-
-            // Populate the page with initial blogs
-            initialBlogs.forEach(blog => addBlogPostToUI(blog.title, blog.content));
-
-            // Event listener to show the blog form
-            addBlogBtn.addEventListener('click', () => {
-                blogFormContainer.style.display = 'block';
-                blogForm.reset();
-            });
-
-            // Event listener to hide the blog form
-            cancelBlogBtn.addEventListener('click', () => {
-                blogFormContainer.style.display = 'none';
-            });
-
-            // Event listener for form submission
-            blogForm.addEventListener('submit', (event) => {
-                event.preventDefault();
-                const title = document.getElementById('blog-title').value;
-                const content = document.getElementById('blog-content').value;
-
-                if (title && content) {
-                    addBlogPostToUI(title, content);
-                    blogFormContainer.style.display = 'none'; // Hide the form after submission
-                }
-            });
 
             // Smooth scrolling for navigation links
             navLinks.forEach(link => {
